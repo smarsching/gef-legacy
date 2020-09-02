@@ -447,14 +447,15 @@ public class Figure implements IFigure {
 		if (!getClientArea(Rectangle.SINGLETON).contains(PRIVATE_POINT))
 			return null;
 
+		x = PRIVATE_POINT.x;
+		y = PRIVATE_POINT.y;
 		IFigure fig;
 		for (int i = children.size(); i > 0;) {
 			i--;
 			fig = (IFigure) children.get(i);
 			if (fig.isVisible() && fig.isEnabled()) {
-				if (fig.containsPoint(PRIVATE_POINT.x, PRIVATE_POINT.y)) {
-					fig = fig.findMouseEventTargetAt(PRIVATE_POINT.x,
-							PRIVATE_POINT.y);
+				if (fig.containsPoint(x, y)) {
+					fig = fig.findMouseEventTargetAt(x, y);
 					if (fig != null) {
 						return fig;
 					}
